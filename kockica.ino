@@ -15,15 +15,19 @@ void loop() {
   int b;
   int display;
   
+  // generisi slucajan broj 0-5
   randValue = random(5);
   Serial.println(randValue);
   
+  // pronadji zapis koji se prikazuje
   display = numbers[randValue];
   Serial.println("display");
   Serial.println(display);
   
-  for (int i = 0; i < 6; i++) {
+  // upali/ugasi svaki od 8 segmenata
+  for (int i = 0; i < 8; i++) {
     
+    // nadji poslednji bit koji treba da se upali/ugasi
     b = display & 1;
     //b = 1 - b;
     Serial.println("b=");
@@ -31,6 +35,7 @@ void loop() {
     Serial.println("display pre");
     Serial.println(display);
     
+    // upali/ugasi segment
     if (b==1){
     digitalWrite(pin[i], HIGH);
       } 
@@ -39,6 +44,7 @@ void loop() {
       digitalWrite(pin[i], LOW);
       }
     
+    // nadji sledeci bit
     display = display >> 1;
     Serial.println("display posle");
     Serial.println(display);
