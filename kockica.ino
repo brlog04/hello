@@ -12,25 +12,33 @@ void setup() {
 }
 
 void loop() {
-  byte b;
+  int b;
   int display;
+  
   randValue = random(5);
   Serial.println(randValue);
+  
   display = numbers[randValue];
   Serial.println("display");
   Serial.println(display);
+  
   for (int i = 0; i < 6; i++) {
+    
     b = display & 1;
     //b = 1 - b;
     Serial.println("b=");
     Serial.println(b);
     Serial.println("display pre");
     Serial.println(display);
+    
     if (b==1){
     digitalWrite(pin[i], HIGH);
-    } else {
+      } 
+    else 
+      {
       digitalWrite(pin[i], LOW);
       }
+    
     display = display >> 1;
     Serial.println("display posle");
     Serial.println(display);
