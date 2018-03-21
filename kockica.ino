@@ -53,14 +53,11 @@ void loop() {
     // nadji poslednji bit koji treba da se upali/ugasi
     b = display & 1;
 	  
+    // invertuj bit jer je anodni display
+    b = 1 - b;
+	  
     // upali/ugasi segment
-    if (b==1){
-    digitalWrite(pin[i], LOW);
-      } 
-    else 
-      {
-      digitalWrite(pin[i], HIGH);
-      }
+    digitalWrite(pin[i], b);
     
     // nadji sledeci bit
     display = display >> 1;
