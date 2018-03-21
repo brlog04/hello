@@ -1,4 +1,5 @@
 /*
+anodni - 7 segmentni display
     a
    ---      | | | | |
   |   |     g f + a b
@@ -11,25 +12,24 @@
    ---	.	  e d + c dp
     d	dp
 	
-	abcdefg   dec
-0 = 0110000 =  48
-1 = 1101101 = 109
-2 = 1101001 = 105
-3 = 1111001 = 121
-4 = 0110011 =  51
-5 = 1011011 =  91
-6 = 1011111 =  95
-7 = 1110000 = 112
-8 = 1111111 = 127
-9 = 1111011 = 123
+    hgfedcba   dec
+0 = 00111111 =  63
+1 = 00000110 =   6
+2 = 01011011 =  91
+3 = 01001111 =  79
+4 = 01100110 = 102
+5 = 01101101 = 109
+6 = 01111101 = 125
+7 = 00000111 =   7
+8 = 01111111 = 127
+9 = 01101111 = 111
 */
 
 int pin[] = {2, 3, 4, 5, 6, 7, 8, 9};
-int numbers[] = {119, 36, 93, 53, 46, 107};
+int numbers[] = { 63, 6, 91, 79, 102, 109, 125, 7, 127, 111};
 int randValue;
 
 void setup() {
-  Serial.begin(9600);
   for (int i = 0; i < 8; i++) {
     pinMode(pin[i], OUTPUT);
     digitalWrite(pin[i], 1);
@@ -41,40 +41,29 @@ void loop() {
   int b;
   int display;
   
-  // generisi slucajan broj 0-5
-  randValue = random(5);
-  Serial.println(randValue);
+  // generisi slucajan broj 0-9
+  randValue = random(10);
   
   // pronadji zapis koji se prikazuje
   display = numbers[randValue];
-  Serial.println("display");
-  Serial.println(display);
   
   // upali/ugasi svaki od 8 segmenata
   for (int i = 0; i < 8; i++) {
     
     // nadji poslednji bit koji treba da se upali/ugasi
     b = display & 1;
-    //b = 1 - b;
-    Serial.println("b=");
-    Serial.println(b);
-    Serial.println("display pre");
-    Serial.println(display);
-    
+	  
     // upali/ugasi segment
     if (b==1){
-    digitalWrite(pin[i], HIGH);
+    digitalWrite(pin[i], LOW);
       } 
     else 
       {
-      digitalWrite(pin[i], LOW);
+      digitalWrite(pin[i], HIGH);
       }
     
     // nadji sledeci bit
     display = display >> 1;
-    Serial.println("display posle");
-    Serial.println(display);
-    Serial.println("#");
   }
-  delay(1000);
+  delay(300);
 }
