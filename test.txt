@@ -8,3 +8,4 @@ iss53 izmena
 iss54 izmena
 
 najnovija izmena iss53
+novi iss55
