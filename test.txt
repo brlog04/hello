@@ -6,3 +6,5 @@ fregtrgwtreg
 
 iss53 izmena
 iss54 izmena
+
+najnovija izmena iss53
