@@ -10,3 +10,4 @@ iss54 izmena
 najnovija izmena iss53
 HOTFIX!!!!
 novi iss55
+HOTFIX2
